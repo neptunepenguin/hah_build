@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="HentaiAtHome" default="jar"
+         basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+<description>Makefile for H@H Client</description>
+<property environment="env"/>
+<property name="version"    value="1.2.0"/>
+<property name="base.jar"   value="HentaiAtHome-${version}.jar"/>
+<property name="base.main"  value="org.hath.base.HentaiAtHomeClient"/>
+<property name="gui.jar"    value="HentaiAtHomeGUI-${version}.jar"/>
+<property name="gui.main"   value="org.hath.gui.HentaiAtHomeClientGUI"/>
+<property name="sqlite.jar" value="sqlite-jdbc-3.7.2.jar"/>
+<property name="src.dir"   location="src"/>
+<property name="build.dir" location="build"/>
+<property name="icons.dir" location="${build.dir}/src"/>
+<property name="deps.dir"  location="lib"/>
+<presetdef name="javac">
+  <javac includeantruntime="false"
+         source="1.6" target="1.6" classpath="${sqlite.jar}"/>
+</presetdef>
+
+<target name="init">
+  <echo>Starting build for ${ant.project.name}.</echo>
+  <mkdir dir="${build.dir}"/>
+  <mkdir dir="${icons.dir}"/>
+  <ivy:retrieve/>
+  <move file="${deps.dir}/${sqlite.jar}" tofile="${sqlite.jar}"/>
+</target>
+
+<target name="clean" description="cleanup">
+  <delete dir="${build.dir}"/>
+  <delete dir="${deps.dir}"/>
+  <delete file="${base.jar}"/>
+  <delete file="${gui.jar}"/>
+  <delete file="${sqlite.jar}"/>
+</target>
+
+<target name="build" depends="init" description="compile H@H">
+  <javac srcdir="${src.dir}" destdir="${build.dir}"/>
+</target>
+
+<target name="jar" depends="build" description="bundles the jars">
+  <jar basedir="${build.dir}" jarfile="${base.jar}">
+    <exclude name="org/hath/gui"/>
+    <exclude name="org/hath/gui/*.class"/>
+    <manifest>
+      <attribute name="Main-Class" value="${base.main}"/>
+      <attribute name="Class-Path" value="${sqlite.jar}"/>
+    </manifest>
+  </jar>
+  <copy todir="${icons.dir}">
+    <fileset dir="${src.dir}">
+      <include name="**/*.png"/>
+    </fileset>
+  </copy>
+  <jar basedir="${build.dir}" jarfile="${gui.jar}">
+    <exclude name="org/hath/base"/>
+    <exclude name="org/hath/base/*.class"/>
+    <manifest>
+      <attribute name="Main-Class" value="${gui.main}"/>
+      <attribute name="Class-Path" value="${base.jar}"/>
+    </manifest>
+  </jar>
+</target>
+
+</project>
+

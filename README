@@ -1,0 +1,41 @@
+README for makefiles for H@H client
+
+* Install
+
+Select either the makefile for apache ant only (without ivy) or for apache ant
+with ivy.  You can download apache ant from (http://ant.apache.org/) and apache
+ivy from (http://ant.apache.org/ivy/).  Note that if you use the makefile for
+apache ant only you will need to provide the jars H@H client depends on
+yourself (the only dependency as of this writing is sqlite-jdbc-3.7.2).
+
+These makefiles shall work with ant 1.7.1 or later (the current release as of
+this writing is ant 1.9.3), and with ivy 2.1.0 or later (the current release as
+of this writing is ivy 2.3.0).  Successful tests were performed with
+combinations of ant 1.7.1, ant 1.9.3, ivy 2.1.0 and ivy 2.3.0.
+
+* Build
+
+Use ant -p to list all build targets.  The most important build targets are the
+default target (attained by running ant without arguments) that builds the jars
+needed to run H@H client; and the "clean" target which removes all files used
+for the build.
+
+* Copying
+
+Copyright (C) 2014 Aquamarine Penguin
+
+This file is part of makefiles for H@H client build.
+
+All makefiles in this repository are free software; you can redistribute and/or
+modify all or some of the makefiles under the terms of the GNU General Public
+License as published by the Free Software Foundation; either version 3 of the
+License, or (at your option) any later version.
+
+The makefiles in this repository are distributed in the hope that they will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+
+The COPYING file contains a copy of the GNU General Public License. If you
+cannot find this file, see <http://www.gnu.org/licenses/>.
+
