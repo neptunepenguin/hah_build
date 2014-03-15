@@ -2,10 +2,9 @@
 <project name="HentaiAtHome" default="jar" basedir=".">
 <description>Makefile for H@H Client</description>
 <property environment="env"/>
-<property name="version"    value="1.2.0"/>
-<property name="base.jar"   value="HentaiAtHome-${version}.jar"/>
+<property name="base.jar"   value="HentaiAtHome.jar"/>
 <property name="base.main"  value="org.hath.base.HentaiAtHomeClient"/>
-<property name="gui.jar"    value="HentaiAtHomeGUI-${version}.jar"/>
+<property name="gui.jar"    value="HentaiAtHomeGUI.jar"/>
 <property name="gui.main"   value="org.hath.gui.HentaiAtHomeClientGUI"/>
 <property name="sqlite.jar" value="sqlite-jdbc-3.7.2.jar"/>
 <property name="src.dir"   location="src"/>

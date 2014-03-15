@@ -13,6 +13,11 @@ this writing is ant 1.9.3), and with ivy 2.1.0 or later (the current release as
 of this writing is ivy 2.3.0).  Successful tests were performed with
 combinations of ant 1.7.1, ant 1.9.3, ivy 2.1.0 and ivy 2.3.0.
 
+H@H client versions 1.0.10, 1.1.x beta series and 1.2.0 were successfully built
+using these makefiles.  Future versions of H@H client shall not present
+difficulties to be built by these makefiles as the structure of the build do
+not change between releases.
+
 * Build
 
 Use ant -p to list all build targets.  The most important build targets are the
